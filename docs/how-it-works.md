@@ -15,13 +15,7 @@ so that fraction is the exact probability.
 
 ### Why "look at the nearest number" is not enough
 
-```
-    A  B  C  D
-1   .  .  .  .
-2   2  .  .  .        3 mines in total
-3   .  .  .  .        "." = covered
-4   1  .  .  .
-```
+![A 4x4 board with a 2 at A2 and a 1 at A4, and the exact mine chances the app calculates](images/example-nearest-number.png)
 
 | Cell | Naive guess from the nearest number | Exact |
 |---|---|---|
@@ -50,10 +44,7 @@ Cheap logical deductions first, repeated until nothing changes:
 - **subset rule**: if constraint A's cells are a subset of B's, then B minus A
   holds the difference. This solves patterns like `1-2-1`:
 
-```
-.  .  .        →    *  .  *
-1  2  1             1  2  1        (the corners are mines, the middle is safe)
-```
+![The 1-2-1 pattern: the corners are mines and the middle is safe](images/example-1-2-1.png)
 
 Cells settled here get 0% or 100%, the only values the app ever shows as certain.
 
