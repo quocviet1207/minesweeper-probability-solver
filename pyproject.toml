@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minesweeper-probability-solver"
+version = "0.1.0"
+description = "Reads a Minesweeper game off your screen and shows the exact mine probability of every cell."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Le Quoc Viet Pham" }]
+requires-python = ">=3.11"
+dependencies = [
+    "PySide6>=6.6",
+    "mss>=10",
+    "numpy>=2",
+    "opencv-python-headless>=4.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.gui-scripts]
+minesweeper-solver = "minesweeper_solver.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["minesweeper_solver*"]
+
+[tool.setuptools.package-data]
+"minesweeper_solver.vision" = ["*.npz"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
